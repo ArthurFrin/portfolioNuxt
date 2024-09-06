@@ -1,6 +1,9 @@
+<style lang="scss">
+@use "~/assets/scss/main.scss";
+</style>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
