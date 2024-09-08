@@ -10,7 +10,6 @@
 
 <style lang="scss" scoped>
 .container {
-    padding-top: 5rem;
     img {
         width: 150px;
         aspect-ratio: 1;
