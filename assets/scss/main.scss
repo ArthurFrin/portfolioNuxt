@@ -8,7 +8,7 @@ body {
   background-color: $bg-primary;
   color: $text-primary;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', monospace;
 }
 
 .font-michroma {
@@ -18,10 +18,51 @@ body {
 }
 
 .button1 {
-  background-color: $bg-secondary;
+  background-color: #5C6174;
   color: $text-primary;
-  padding: 10px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  font-size: 1.25rem;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  border-radius: 3px;
+  position: relative; // Nécessaire pour le pseudo-élément
+  overflow: hidden; // Cache tout ce qui déborde du bouton
+  z-index: 1;
+
+  // Style du bouton avant le hover
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  transition: color 0.3s ease-in-out;
+
+  &.is-active {
+    background-color: #363843;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+
+
+
+  // Pseudo-élément pour l'effet volet
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #363843; // La couleur au hover
+    z-index: -1; // Positionne derrière le texte
+    transition: left 0.2s ease-in-out;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  // Changement de couleur au hover
+  &:hover {
+    color: white; // Change la couleur du texte si souhaité
+
+    // Animation du pseudo-élément
+    &::before {
+      left: 0;
+    }
+  }
 }
+

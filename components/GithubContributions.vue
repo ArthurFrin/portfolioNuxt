@@ -113,7 +113,7 @@ function calculateMonthOrderAndColumns(weeks: any[]): monthColumns[] {
   const orderedMonths: monthColumns[] = [];
   for (let i = 0; i < 12; i++) {
     const currentMonth = (firstMonth + i) % 12; // Ordre cyclique des mois
-    orderedMonths.push({ month: months[currentMonth], columns: monthColumns[currentMonth]/7 });
+    orderedMonths.push({ month: months[currentMonth], columns: monthColumns[currentMonth] / 7 });
   }
 
   return orderedMonths;
@@ -127,21 +127,16 @@ onMounted(() => {
 <template>
   <div class="graph">
     <ul class="months">
-      <li v-for="(month, index) in orderedMonths" :key="index" :style="{ width: `${month.columns * 13}px` }">{{ month.month }}</li>
+      <li v-for="(month, index) in orderedMonths" :key="index" :style="{ width: `${month.columns * 13}px` }">{{
+        month.month }}</li>
     </ul>
     <div class="days-squares">
       <ul class="days">
-        <li v-for="(day, index) in ['Tue','Thu','Sat']" :key="index">{{ day }}</li>
+        <li v-for="(day, index) in ['Tue', 'Thu', 'Sat']" :key="index">{{ day }}</li>
       </ul>
       <ul class="squares">
-        <li 
-          v-for="(square, index) in squares" 
-          :key="index" 
-          :data-level="square.level"
-          :data-date="square.date"
-          :data-contributions="square.level"
-          class="square"
-        >
+        <li v-for="(square, index) in squares" :key="index" :data-level="square.level" :data-date="square.date"
+          :data-contributions="square.level" class="square">
           <div class="tooltip">{{ square.date }}: {{ square.level }} contributions</div>
         </li>
       </ul>
@@ -150,17 +145,12 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 //reset li
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
 
 $square-size: 10px;
 $square-gap: 3px;
 $week-width: calc(#{$square-size} + #{$square-gap});
 
-$background-default: hsl(325, 34%, 87%);
+$background-default: hsl(325, 59%, 90%);
 $background-level-1: hsl(326, 59%, 70%);
 $background-level-2: hsl(326, 59%, 50%);
 $background-level-3: hsl(326, 59%, 30%);
@@ -170,26 +160,30 @@ $background-level-4: hsl(326, 59%, 20%);
   display: flex;
   flex-direction: column;
   grid-template-areas:
-      'empty months'
-      'days squares';
+    'empty months'
+    'days squares';
   grid-template-columns: auto 1fr;
   grid-gap: 10px;
 
   .months {
     display: flex;
     font-size: 12px;
-    padding-left: 3.2rem;
+    padding-left: 2.7rem;
   }
 
   .squares {
     display: grid;
     grid-gap: $square-gap;
     grid-template-rows: repeat(7, $square-size);
+    background-color: rgba(255, 255, 255, 0.2); /* Un fond semi-transparent */
+    backdrop-filter: blur(50px);
+    padding: 0.7rem;
+    border-radius: 12px;
   }
 
   .days-squares {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .days {
@@ -203,6 +197,7 @@ $background-level-4: hsl(326, 59%, 20%);
   .squares {
     grid-auto-flow: column;
     grid-auto-columns: $square-size;
+  min-width: 700px;
   }
 
   .squares li {
@@ -221,6 +216,7 @@ $background-level-4: hsl(326, 59%, 20%);
     &[data-level='3'] {
       background-color: $background-level-3;
     }
+
     &[data-level='4'] {
       background-color: $background-level-4;
     }
