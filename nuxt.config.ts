@@ -13,10 +13,19 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt'],
+  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', '@nuxtjs/i18n'],
   googleFonts: {
     families: {
       Michroma: true,
     }
+  },
+  i18n: {
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
+      { code: 'fr', iso: 'fr-FR', file: 'fr.json', name: 'Français' }
+    ],
+    defaultLocale: 'fr',
+    lazy: true,
+    langDir: 'locales/'
   }
 })

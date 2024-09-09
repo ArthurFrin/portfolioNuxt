@@ -1,0 +1,76 @@
+{
+    "profile": "Profile",
+    "less": "Less",
+    "more": "More",
+    "days": {
+      "tuesday": "Tue",
+      "thursday": "Thu",
+      "saturday": "Sat"
+    },
+    "months": {
+      "january": "Jan",
+      "february": "Feb",
+      "march": "Mar",
+      "april": "Apr",
+      "may": "May",
+      "june": "Jun",
+      "july": "Jul",
+      "august": "Aug",
+      "september": "Sep",
+      "october": "Oct",
+      "november": "Nov",
+      "december": "Dec"
+    },
+    "contributions-github": "GitHub contributions",
+    "others": "Others",
+  
+    "vuejs": {
+      "desc": "Studied at ESGI and used in all personal and professional projects"
+    },
+    "angular": {
+      "desc": "Used in projects at Extia"
+    },
+    "javascript": {
+      "desc": "Studied at ESGI"
+    },
+    "typescript": {
+      "desc": "Studied at ESGI and used in all personal and professional projects"
+    },
+    "tailwindcss": {
+      "desc": "Used in projects at Extia for design"
+    },
+    "sass": {
+      "desc": "Used on cleanwalk.org as a CSS preprocessor"
+    },
+    "nodejs": {
+      "desc": "Studied at ESGI"
+    },
+    "nestjs": {
+      "desc": "Node.js framework used as an API in a project at Extia"
+    },
+    "fastify": {
+      "desc": "Lightweight JavaScript framework used in the IA-games project for API"
+    },
+    "python": {
+      "desc": "Studied at ESGI and used in the cleanwalk.org association project"
+    },
+    "flask": {
+      "desc": "Python framework used for the cleanwalk.org API"
+    },
+    "docker": {
+      "desc": "Studied at ESGI, used in the IA-games school project and cleanwalk.org, containerized on VPS"
+    },
+    "githubactions": {
+      "desc": "Used in the IA-games school project and cleanwalk.org to automate deployment on VPS"
+    },
+    "mysql": {
+      "desc": "Studied at ESGI and used in the IA-games project"
+    },
+    "postgresql": {
+      "desc": "Used in the cleanwalk.org association project as a database"
+    },
+    "firebase": {
+      "desc": "Used at Extia on a project as a database and in a small personal project"
+    }
+  }
+  

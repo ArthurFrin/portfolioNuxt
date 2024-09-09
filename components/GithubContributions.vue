@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useGithubContributionStore } from "~/stores/githubContributions";
 const store = useGithubContributionStore();
+const { t } = useI18n();
 
 interface monthColumns {
     month: string;
@@ -34,18 +35,18 @@ const calculateMonthOrderAndColumns = (
     to: string
 ): monthColumns[] => {
     const months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+    t('months.january'),
+    t('months.february'),
+    t('months.march'),
+    t('months.april'),
+    t('months.may'),
+    t('months.june'),
+    t('months.july'),
+    t('months.august'),
+    t('months.september'),
+    t('months.october'),
+    t('months.november'),
+    t('months.december')
     ];
     const startDate = new Date(from);
     const endDate = new Date(to);
@@ -145,7 +146,7 @@ onMounted(() => {
         </ul>
         <div class="days-squares">
             <ul class="days">
-                <li v-for="(day, index) in ['Tue', 'Thu', 'Sat']" :key="index">
+                <li v-for="(day, index) in [ t('days.tuesday'),t('days.thursday'),t('days.saturday',)]" :key="index">
                     {{ day }}
                 </li>
             </ul>
@@ -171,7 +172,7 @@ onMounted(() => {
         </div>
     </div>
     <div class="legend">
-        <p>Less</p>
+        <p>{{ $t('less') }}</p>
         <ul>
             <li class="square" data-level="0"></li>
             <li class="square" data-level="1"></li>
@@ -179,7 +180,7 @@ onMounted(() => {
             <li class="square" data-level="3"></li>
             <li class="square" data-level="4"></li>
         </ul>
-        <p>More</p>
+        <p>{{ $t('more') }}</p>
     </div>
 </template>
 

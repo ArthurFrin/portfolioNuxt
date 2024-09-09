@@ -1,0 +1,76 @@
+{
+    "profile": "Profil",
+    "less": "Moins",
+    "more": "Plus",
+    "days": {
+      "tuesday": "Mar",
+      "thursday": "Jeu",
+      "saturday": "Sam"
+    },
+    "months": {
+      "january": "Jan",
+      "february": "Fév",
+      "march": "Mar",
+      "april": "Avr",
+      "may": "Mai",
+      "june": "Jui",
+      "july": "Jui",
+      "august": "Aoû",
+      "september": "Sep",
+      "october": "Oct",
+      "november": "Nov",
+      "december": "Déc"
+    },
+    "contributions-github": "Contributions GitHub",
+    "others": "Autres",
+  
+    "vuejs": {
+      "desc": "Étudié à l'ESGI et utilisé sur tous les projets persos et professionnels"
+    },
+    "angular": {
+      "desc": "Utilisé sur des projets au sein d'Extia"
+    },
+    "javascript": {
+      "desc": "Étudié à l'ESGI"
+    },
+    "typescript": {
+      "desc": "Étudié à l'ESGI et utilisé sur tous les projets persos et professionnels"
+    },
+    "tailwindcss": {
+      "desc": "Utilisé sur des projets au sein d'Extia pour le design"
+    },
+    "sass": {
+      "desc": "Utilisé sur cleanwalk.org comme préprocesseur CSS"
+    },
+    "nodejs": {
+      "desc": "Étudié à l'ESGI"
+    },
+    "nestjs": {
+      "desc": "Framework Node.js utilisé comme API sur un projet au sein d'Extia"
+    },
+    "fastify": {
+      "desc": "Framework léger JavaScript utilisé sur le projet IA-games pour API"
+    },
+    "python": {
+      "desc": "Étudié à l'ESGI et utilisé sur le projet associatif cleanwalk.org"
+    },
+    "flask": {
+      "desc": "Framework Python utilisé pour l'API de cleanwalk.org"
+    },
+    "docker": {
+      "desc": "Étudié à l'ESGI, utilisé sur le projet d'école IA-games et sur cleanwalk.org, containerisation sur VPS"
+    },
+    "githubactions": {
+      "desc": "Utilisé sur le projet d'école IA-games et sur cleanwalk.org pour automatiser le déploiement sur VPS"
+    },
+    "mysql": {
+      "desc": "Étudié à l'ESGI et utilisé sur le projet IA-games"
+    },
+    "postgresql": {
+      "desc": "Utilisé sur le projet associatif cleanwalk.org comme base de données"
+    },
+    "firebase": {
+      "desc": "Utilisé au sein d'Extia sur un projet comme base de données et sur un mini-projet perso"
+    }
+  }
+  

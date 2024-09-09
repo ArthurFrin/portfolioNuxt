@@ -1,103 +1,101 @@
-<script lang="ts" setup>
-// Données des icônes, inchangé
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'; // Importez useI18n
+
+const { t } = useI18n(); // Utilisez la méthode t() pour les traductions
+
+// Liste des icônes frontend avec les descriptions via i18n
 const frontendIcons = [
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
         alt: "Vue.js",
-        description:
-            "Etudié à l'ESGI et utilisé sur tous les projets persos et professionnels",
+        description: t('vuejs.desc'), // Description traduite avec i18n
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
         alt: "Angular",
-        description: "Utilisé sur des projets au sein d'Extia",
+        description: t('angular.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
         alt: "JavaScript",
-        description: "Etudié à l'ESGI",
+        description: t('javascript.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
         alt: "TypeScript",
-        description:
-            "Etudié à l'ESGI et utilisé sur tous les projets persos et professionnels",
+        description: t('typescript.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
         alt: "Tailwind CSS",
-        description: "Utilisé sur des projets au sein d'Extia pour le design",
+        description: t('tailwindcss.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg",
         alt: "Sass",
-        description: "Utilisé sur cleanwalk.org comme préprocesseur CSS",
+        description: t('sass.desc'),
     },
 ];
 
+// Liste des icônes backend
 const backendIcons = [
     {
         src: "https://nodejs.org/static/logos/jsIconGreen.svg",
         alt: "Node.js",
-        description: "Etudié à l'ESGI",
+        description: t('nodejs.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
         alt: "NestJS",
-        description:
-            "Framework Node.js utilisé comme API sur un projet au sein d'Extia",
+        description: t('nestjs.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastify/fastify-original.svg",
         alt: "Fastify",
-        description:
-            "Framework léger javascript utilisé sur le projet IA-games pour API",
+        description: t('fastify.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
         alt: "Python",
-        description:
-            "Etudié à l'ESGI et utilisé sur le projet associatif cleanwalk.org",
+        description: t('python.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg",
         alt: "Flask",
-        description: "Framework Python utilisé pour l'API de cleanwalk.org",
+        description: t('flask.desc'),
     },
 ];
 
+// Liste des icônes DevOps
 const devopsIcons = [
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg",
         alt: "Docker",
-        description:
-            "Etudié à l'ESGI, Utilisé sur le projet d'école IA-games et sur cleanwalk.org, contenerisation sur VPS",
+        description: t('docker.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
         alt: "GitHub Actions",
-        description:
-            "Utilisé sur le projet d'école IA-games et sur cleanwalk.org pour automatiser le déploiement sur VPS",
+        description: t('githubactions.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
         alt: "MySQL",
-        description: "Etudié à l'ESGI et utilisé sur le projet IA-games",
+        description: t('mysql.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg",
         alt: "PostgreSQL",
-        description:
-            "Utilisé sur le projet associatif cleanwalk.org comme base de données",
+        description: t('postgresql.desc'),
     },
     {
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg",
         alt: "Firebase",
-        description:
-            "Utilisé au sein d'Extia sur un projet comme base de données et sur un mini-projet perso",
+        description: t('firebase.desc'),
     },
 ];
 </script>
+
 
 <template>
     <section>
