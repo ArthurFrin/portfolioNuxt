@@ -76,6 +76,7 @@ const props = defineProps<{
     white-space: normal; 
     text-align: left; 
     line-height: 1.2; 
+    flex: 1;
 }
 
 /* Affiche la description au survol et agrandit la carte */
