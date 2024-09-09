@@ -102,7 +102,7 @@ const devopsIcons = [
         <div class="technos-container">
             <TechnoList :icons="frontendIcons" title="Frontend" />
             <TechnoList :icons="backendIcons" title="Backend" />
-            <TechnoList :icons="devopsIcons" title="Others" />
+            <TechnoList :icons="devopsIcons" :title="t('others')" />
         </div>
         <div class="btns">
             <ButtonLink format="small" direction="left" route-name="/" />
