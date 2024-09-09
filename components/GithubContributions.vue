@@ -1,148 +1,128 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import ky from 'ky';
+import { useGithubContributionStore } from '~/stores/githubContributions';
+const store = useGithubContributionStore();
 
 interface monthColumns {
   month: string;
   columns: number;
 }
 
-const squares = ref<{ date: string; level: number; }[]>([]);
-const orderedMonths = ref<monthColumns[]>([]); // Définir orderedMonths comme un ref réactif
-const months = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-];
-
-const setOrderMonths = (months: string[], monthColumns: number[]): monthColumns[] => {
-  const orderedMonths: monthColumns[] = [];
-  months.forEach((month, index) => {
-    orderedMonths.push({ month, columns: monthColumns[index] });
-  });
-  return orderedMonths;
-};
-
-// Calculer la date d'il y a 1 an avec un dimanche en premier
-function getLastYearDate(): string {
+const getLastYearDate = (): string => {
   const today = new Date();
   const lastYear = new Date(today);
   lastYear.setFullYear(today.getFullYear() - 1);
   lastYear.setDate(lastYear.getDate() - lastYear.getDay());
   return lastYear.toISOString();
-}
-
-function getTodayDate(): string {
-  return new Date().toISOString();
-}
-
-// GraphQL Query pour obtenir le calendrier des contributions
-const query = `
-  query($login: String!, $from: DateTime!, $to: DateTime!) {
-    user(login: $login) {
-      contributionsCollection(from: $from, to: $to) {
-        contributionCalendar {
-          totalContributions
-          weeks {
-            contributionDays {
-              date
-              contributionCount
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-const token = import.meta.env.VITE_GITHUB_TOKEN as string;
-
-async function fetchContributions(username: string) {
-  const from = getLastYearDate();
-  const to = getTodayDate();
-
-  const response = await ky.post('https://api.github.com/graphql', {
-    json: {
-      query,
-      variables: { login: username, from, to }
-    },
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).json() as any;
-
-  const weeks = response.data.user.contributionsCollection.contributionCalendar.weeks;
-  const contributionSquares = [];
-
-  // Parcourir chaque jour et calculer le niveau de contribution
-  for (const week of weeks) {
-    for (const day of week.contributionDays) {
-      const level = selectLevel(day.contributionCount);
-      contributionSquares.push({ date: day.date, level });
-    }
-  }
-
-  // Réorganiser pour s'assurer que les semaines commencent par lundi
-  squares.value = contributionSquares;
-
-  // Mettre à jour les mois ordonnés et calculer les colonnes
-  orderedMonths.value = calculateMonthOrderAndColumns(weeks);
-}
-
-const selectLevel = (count: number) => {
-  if (count === 0) return 0;
-  if (count <= 5) return 1;
-  if (count <= 10) return 2;
-  if (count <= 15) return 3;
-  return 4;
 };
 
-// Calculer le nombre de colonnes et l'ordre des mois
-function calculateMonthOrderAndColumns(weeks: any[]): monthColumns[] {
-  const firstDate = new Date(weeks[0].contributionDays[0].date); // Premier jour de contribution
-  const firstMonth = firstDate.getMonth(); // Obtenez le premier mois
+const getTodayDate = (): string => {
+  return new Date().toISOString();
+};
 
-  const monthColumns: number[] = new Array(12).fill(0);
-
-  weeks.forEach((week: any) => {
-    week.contributionDays.forEach((day: any) => {
-      const date = new Date(day.date);
-      const month = date.getMonth(); // Obtenir le mois
-      monthColumns[month] += 1;
-    });
-  });
-
-  const orderedMonths: monthColumns[] = [];
-  for (let i = 0; i < 12; i++) {
-    const currentMonth = (firstMonth + i) % 12; // Ordre cyclique des mois
-    orderedMonths.push({ month: months[currentMonth], columns: monthColumns[currentMonth] / 7 });
-  }
-
-  return orderedMonths;
+interface monthColumns {
+  month: string;
+  columns: number;
 }
 
+const orderedMonths = ref<monthColumns[]>([]);
+
+const githubName = 'ArthurFrin';
+
+const calculateMonthOrderAndColumns = (from: string, to: string): monthColumns[] => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const startDate = new Date(from);
+  const endDate = new Date(to);
+
+  const monthColumns: monthColumns[] = [];
+  
+  let currentDate = new Date(startDate);
+  let currentMonthIndex = currentDate.getMonth();
+  let weeksForCurrentMonth = 0;
+
+  // Fonction pour compter le nombre de jours d'une semaine qui appartiennent à un mois
+  const getDaysInMonthForWeek = (start: Date, end: Date, month: number) => {
+    let count = 0;
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      if (d.getMonth() === month) {
+        count++;
+      }
+    }
+    return count;
+  };
+
+  // Boucle pour chaque semaine entre "from" et "to"
+  while (currentDate <= endDate) {
+    const weekEndDate = new Date(currentDate);
+    weekEndDate.setDate(currentDate.getDate() + 6); // Fin de la semaine
+
+    // Ne pas dépasser la date de fin
+    if (weekEndDate > endDate) {
+      weekEndDate.setTime(endDate.getTime());
+    }
+
+    // Calculer le nombre de jours dans le mois courant et le mois suivant
+    const currentMonthDays = getDaysInMonthForWeek(currentDate, weekEndDate, currentMonthIndex);
+    const nextMonthIndex = (currentMonthIndex + 1) % 12; // Mois suivant (gérer le passage de décembre à janvier)
+    const nextMonthDays = getDaysInMonthForWeek(currentDate, weekEndDate, nextMonthIndex);
+
+    // Attribuer la colonne au mois qui a le plus de jours dans cette semaine
+    if (currentMonthDays >= nextMonthDays) {
+      weeksForCurrentMonth++;
+    } else {
+      // Si on passe à un nouveau mois
+      monthColumns.push({ month: months[currentMonthIndex], columns: weeksForCurrentMonth });
+      currentMonthIndex = nextMonthIndex;
+      weeksForCurrentMonth = 1; // La semaine commence dans le mois suivant
+    }
+
+    // Passer à la semaine suivante
+    currentDate.setDate(currentDate.getDate() + 7);
+  }
+
+  // Ajouter le dernier mois s'il reste des semaines non comptées
+  if (weeksForCurrentMonth > 0) {
+    monthColumns.push({ month: months[currentMonthIndex], columns: weeksForCurrentMonth });
+  }
+
+  // Ajustement pour retirer une colonne en trop pour le premier mois
+  if (monthColumns.length > 0 && monthColumns[0].columns > 1) {
+    monthColumns[0].columns -= 1;
+  }
+
+  return monthColumns;
+};
 onMounted(() => {
-  fetchContributions('ArthurFrin'); // Remplacer par le nom d'utilisateur GitHub
+  const from = getLastYearDate();
+  const to = getTodayDate();
+  console.log(from, to);
+  orderedMonths.value =calculateMonthOrderAndColumns(from, to);
+  store.fetchContributions(githubName, from, to);
 });
 </script>
 
 <template>
   <div class="graph">
     <ul class="months">
-      <li v-for="(month, index) in orderedMonths" :key="index" :style="{ width: `${month.columns * 13}px` }">{{
-        month.month }}</li>
+      <li v-for="(month, index) in orderedMonths" :key="index" :style="{ width: `${month.columns * 13}px` }">
+        {{ month.month }}
+      </li>
     </ul>
     <div class="days-squares">
       <ul class="days">
         <li v-for="(day, index) in ['Tue', 'Thu', 'Sat']" :key="index">{{ day }}</li>
       </ul>
       <ul class="squares">
-        <li v-for="(square, index) in squares" :key="index" :data-level="square.level" :data-date="square.date"
-          :data-contributions="square.level" class="square">
-          <div class="tooltip">{{ square.date }}: {{ square.level }} contributions</div>
+        <!-- Afficher des carrés placeholder si les données ne sont pas encore chargées -->
+        <li v-for="(square, index) in (store.squares.length ? store.squares : Array(52 * 7).fill({ level: 0 }))"
+          :key="index" :data-level="square.level" class="square">
+          <div class="tooltip">{{ square.date ? `${square.date}: ${square.level} contributions` : '' }}</div>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
 //reset li
 
@@ -166,16 +146,18 @@ $background-level-4: hsl(326, 59%, 20%);
   grid-gap: 10px;
 
   .months {
+    height: 0.8rem;
     display: flex;
     font-size: 12px;
-    padding-left: 2.7rem;
+    padding-left: 2.5rem;
   }
 
   .squares {
     display: grid;
     grid-gap: $square-gap;
     grid-template-rows: repeat(7, $square-size);
-    background-color: rgba(255, 255, 255, 0.2); /* Un fond semi-transparent */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Un fond semi-transparent */
     backdrop-filter: blur(50px);
     padding: 0.7rem;
     border-radius: 12px;
@@ -197,7 +179,6 @@ $background-level-4: hsl(326, 59%, 20%);
   .squares {
     grid-auto-flow: column;
     grid-auto-columns: $square-size;
-  min-width: 700px;
   }
 
   .squares li {

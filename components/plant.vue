@@ -22,7 +22,7 @@
 
     @media screen and (min-width: 768px) {
         right: 5rem; 
-        margin-top: 4.7rem; //navbar height
+        margin-top: 4.6rem; //navbar height
     }
     
 }
