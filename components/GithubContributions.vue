@@ -291,10 +291,9 @@ $background-level-4: hsl(326, 59%, 25%);
 
 .legend {
     display: flex;
-    padding-right: 1rem;
     gap: 0.5rem;
     font-size: 12px;
-    padding-left: 2.5rem;
+    padding: 0.5rem 1rem 0 2.5rem;
     align-items: center;
     justify-content: right;
 

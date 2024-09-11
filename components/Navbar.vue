@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#i18n'; // Correct import pour setLocale
 import Burger from './icons/Burger.vue';
 
 const burgerBool = ref(false);
@@ -20,28 +20,25 @@ watch(route, () => {
 });
 
 // i18n: gestion de la langue
-const { locale } = useI18n();
-const switchLocalePath = useSwitchLocalePath();
+const { locale, setLocale } = useI18n(); // Import de setLocale pour changer la langue
 
-// Fonction pour basculer la langue
+// Fonction pour basculer la langue sans changer l'URL et définir le cookie
 const toggleLocale = () => {
   const newLocale = locale.value === 'en' ? 'fr' : 'en';
-  locale.value = newLocale;
-  localStorage.setItem('locale', newLocale);
-  const newPath = switchLocalePath(newLocale);
-  if (newPath) {
-    window.location.href = newPath;
-  }
+  setLocale(newLocale); // Utiliser setLocale pour changer la langue
+  localStorage.setItem('locale', newLocale); // Sauvegarde dans localStorage
+  window.location.reload(); // Recharger la page pour appliquer les changements
 };
+
 onMounted(() => {
   const storedLocale = localStorage.getItem('locale');
   if (storedLocale && locale.value !== storedLocale) {
-    locale.value = storedLocale;
-    locale.value = 'fr'
-    localStorage.setItem('locale', 'fr');
+    setLocale(storedLocale); // Utiliser setLocale pour basculer à la langue stockée
   }
 });
 </script>
+
+
 <template>
   <button class="burger" @click="toggleBurger()">
     <Burger />
@@ -53,17 +50,18 @@ onMounted(() => {
     <NuxtLink class="button1" :class="{ 'is-active': routeName === 'technos' }" to="/technos">
       Technos
     </NuxtLink>
+    <NuxtLink class="button1" :class="{ 'is-active': routeName === 'projects' }" to="/projects">
+      {{ $t('projects') }}
+    </NuxtLink>
     <!-- Bouton pour changer la langue -->
     <button @click="toggleLocale">
-      {{ locale }} <!-- Affiche l'autre langue -->
+      {{ locale }} <!-- Affiche la langue actuelle -->
     </button>
   </nav>
 </template>
 
-
 <style lang="scss" scoped>
 .navbar {
-  position: fixed;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -84,6 +82,5 @@ onMounted(() => {
   .burger {
     display: none;
   }
-
 }
 </style>

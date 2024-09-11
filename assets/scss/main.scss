@@ -66,3 +66,21 @@ body {
   }
 }
 
+.button-code-source {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #24292F;
+  padding: 0.2rem 2rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+  p {
+    margin: 0;
+  }
+}
+

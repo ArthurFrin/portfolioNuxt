@@ -71,6 +71,7 @@
     },
     "firebase": {
       "desc": "Used at Extia on a project as a database and in a small personal project"
-    }
+    },
+    "projects": "Projects"
   }
   

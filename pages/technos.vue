@@ -106,7 +106,7 @@ const devopsIcons = [
         </div>
         <div class="btns">
             <ButtonLink format="small" direction="left" route-name="/" />
-            <ButtonLink format="small" direction="right" route-name="test" />
+            <ButtonLink format="small" direction="right" route-name="projects" />
         </div>    
     </section>
 </template>

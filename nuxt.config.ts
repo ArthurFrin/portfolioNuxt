@@ -20,12 +20,20 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
+    strategy: 'no_prefix',
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
       { code: 'fr', iso: 'fr-FR', file: 'fr.json', name: 'Français' }
     ],
     defaultLocale: 'fr',
     lazy: true,
-    langDir: 'locales/'
+    langDir: 'locales/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      fallbackLocale: 'fr',
+      alwaysRedirect: false
+    }
+
   }
 })

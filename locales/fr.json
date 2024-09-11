@@ -71,6 +71,11 @@
     },
     "firebase": {
       "desc": "Utilisé au sein d'Extia sur un projet comme base de données et sur un mini-projet perso"
-    }
+    },
+    "projects": "Projets",
+
+    "biophilum.desc": "Biophilum est une landing page en single app application fais en Vue3",
+    "cleanwalk.desc": "platforme web associative pour l’organisation de cleanwalks (marche citoyennes de dépolution) technos: Vue3, Flask, docker,MySQL"
+
   }
   
