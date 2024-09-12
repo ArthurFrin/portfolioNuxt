@@ -8,7 +8,12 @@
             <GithubContributions />
         </div>
         <div class="btn-box">
-            <ButtonLink format="big" route-name="technos" direction="right" class="button-link" />
+            <ButtonLink
+                format="big"
+                route-name="technos"
+                direction="right"
+                class="button-link"
+            />
         </div>
     </section>
 </template>
@@ -17,31 +22,44 @@
 section {
     padding: 0 0.5rem;
     background: linear-gradient(157deg, #37457d 15.04%, #ef7163 118.98%);
-    height: 100dvh;
+    height: 100%;
+    min-height: 100lvh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
+
+    .profile {
+        padding: 2rem 0;
+        margin-left: 2rem;
+    }
+
+    .btn-box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 
     @media screen and (min-width: 768px) {
         flex-direction: row;
-        padding: 0 2.5rem;        
-    }
-}
+        padding: 0 2.5rem;
 
-.profile {
-    padding: 9rem 0 2rem;
-    margin-left: 2rem;
-}
+        .btn-box {
+            justify-content: center;
+            height: 100vh;
+            top: 0;
 
-.btn-box {
-    display: flex;
-    width: 100%;
-    padding: 4rem 0;
-    justify-content: center;
-    align-items: center;
+            .button-link {
+                margin-top: 9rem;
+            }
+            
+        }
 
-    @media screen and (min-width: 768px) {
-        padding: 9rem 0 0 0;
+        .profile {
+            padding: 9rem 0 2rem;
+
+        }
     }
 }
 </style>

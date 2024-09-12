@@ -16,7 +16,8 @@ const t = useI18n().t
 section {
     background: linear-gradient(224deg, #377D57 2.99%, #37457D 90.89%);
     display: flex;
-    height: 100dvh;
+    height: 100%;
+    min-height: 100lvh;
     padding: 0 0.5rem;
     flex-direction: column;
     align-items: center;

@@ -119,8 +119,9 @@ section {
     align-items: center;
     background: linear-gradient(110deg, #37457d 51.17%, #ef7163 105.78%);
     color: #fff;
-    height: 100dvh;
     padding: 0 0.5rem;
+    height: 100%;
+    min-height: 100lvh;
 
     .technos-container {
         padding-top: 3rem;
@@ -137,7 +138,7 @@ section {
 }
 .btns {
     display: flex;
-    margin-top: 2rem;
+    margin: 2rem 0;
     gap: 2rem;
 
     @media screen and (min-width: 768px) {
