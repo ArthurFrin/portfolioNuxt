@@ -14,7 +14,12 @@ const t = useI18n().t
 <style lang="scss" scoped>
 
 section {
-    height: 100lvh;
-    background: linear-gradient(224deg, #377D57 2.99%, #37457D 90.89%);}
+    background: linear-gradient(224deg, #377D57 2.99%, #37457D 90.89%);
+    display: flex;
+    height: 100dvh;
+    padding: 0 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    }
 </style>
 

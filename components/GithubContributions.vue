@@ -35,18 +35,18 @@ const calculateMonthOrderAndColumns = (
     to: string
 ): monthColumns[] => {
     const months = [
-    t('months.january'),
-    t('months.february'),
-    t('months.march'),
-    t('months.april'),
-    t('months.may'),
-    t('months.june'),
-    t('months.july'),
-    t('months.august'),
-    t('months.september'),
-    t('months.october'),
-    t('months.november'),
-    t('months.december')
+        t("months.january"),
+        t("months.february"),
+        t("months.march"),
+        t("months.april"),
+        t("months.may"),
+        t("months.june"),
+        t("months.july"),
+        t("months.august"),
+        t("months.september"),
+        t("months.october"),
+        t("months.november"),
+        t("months.december"),
     ];
     const startDate = new Date(from);
     const endDate = new Date(to);
@@ -146,7 +146,14 @@ onMounted(() => {
         </ul>
         <div class="days-squares">
             <ul class="days">
-                <li v-for="(day, index) in [ t('days.tuesday'),t('days.thursday'),t('days.saturday',)]" :key="index">
+                <li
+                    v-for="(day, index) in [
+                        t('days.tuesday'),
+                        t('days.thursday'),
+                        t('days.saturday'),
+                    ]"
+                    :key="index"
+                >
                     {{ day }}
                 </li>
             </ul>
@@ -172,7 +179,7 @@ onMounted(() => {
         </div>
     </div>
     <div class="legend">
-        <p>{{ $t('less') }}</p>
+        <p>{{ $t("less") }}</p>
         <ul>
             <li class="square" data-level="0"></li>
             <li class="square" data-level="1"></li>
@@ -180,7 +187,7 @@ onMounted(() => {
             <li class="square" data-level="3"></li>
             <li class="square" data-level="4"></li>
         </ul>
-        <p>{{ $t('more') }}</p>
+        <p>{{ $t("more") }}</p>
     </div>
 </template>
 
@@ -299,7 +306,7 @@ $background-level-4: hsl(326, 59%, 25%);
 
     ul {
         display: flex;
-        gap:3px;
+        gap: 3px;
 
         li {
             width: 10px;
@@ -323,10 +330,11 @@ $background-level-4: hsl(326, 59%, 25%);
             overflow: visible;
         }
     }
-    h3 {
-        font-size: 1.2rem;
-        padding-left: 2rem;
-        margin-bottom: 0.5rem;
-    }
+}
+
+h3 {
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
 }
 </style>

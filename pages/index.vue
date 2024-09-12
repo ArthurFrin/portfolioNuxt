@@ -36,8 +36,12 @@ section {
 .btn-box {
     display: flex;
     width: 100%;
-    padding-top: 9rem;
+    padding: 4rem 0;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: 768px) {
+        padding: 9rem 0 0 0;
+    }
 }
 </style>

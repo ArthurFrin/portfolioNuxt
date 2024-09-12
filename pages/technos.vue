@@ -118,10 +118,12 @@ section {
     justify-content: center;
     align-items: center;
     background: linear-gradient(110deg, #37457d 51.17%, #ef7163 105.78%);
-    height: 100dvh;
     color: #fff;
+    height: 100dvh;
+    padding: 0 0.5rem;
 
     .technos-container {
+        padding-top: 3rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -129,6 +131,7 @@ section {
 
         @media screen and (min-width: 768px) {
             flex-direction: row;
+            padding-top: 0;
         }
     }
 }
