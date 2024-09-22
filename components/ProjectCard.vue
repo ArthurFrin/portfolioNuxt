@@ -44,6 +44,7 @@ const props = defineProps<{
     min-width: 100px;
     max-width: 600px;
     width: 100%;
+    padding: 1rem;
     .left {
         display: flex;
         flex-direction: column;
@@ -77,17 +78,6 @@ const props = defineProps<{
             border-radius: 12px;
         }
 
-    }
-
-    @media  screen and (min-width: 768px) {
-        flex-direction: column;
-        .left {
-            width: 100%;
-        }
-        .right {
-            width: 100%;
-        }
-        
     }
 }
 </style>

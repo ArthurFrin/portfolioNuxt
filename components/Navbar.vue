@@ -28,6 +28,7 @@ routeName.value = route.name as string;
 
 watch(route, () => {
   routeName.value = route.name as string;
+  burgerBool.value = false; // Fermer le burger lorsqu'on change de route
 });
 
 // Gestion de la langue avec i18n
@@ -80,7 +81,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .navbar {
-  display: none; /* Cacher par défaut */
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -94,12 +95,8 @@ onMounted(() => {
   z-index: 100;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform: translateX(-100%); /* Par défaut, la navbar est cachée à gauche */
-  opacity: 0; /* Cacher visuellement en plus du translate */
-
   &.is-open {
-    display: flex; /* Montrer le menu */
     transform: translateX(0); /* Le menu est visible */
-    opacity: 1; /* Assurer que le menu est complètement visible */
   }
 }
 
@@ -125,7 +122,7 @@ onMounted(() => {
 }
 
 .language {
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0.5rem;
   cursor: pointer;
 }
@@ -137,14 +134,12 @@ onMounted(() => {
   }
 
   .navbar {
-    display: flex; /* Montrer la navbar sur desktop */
     position: fixed;
     transform: none;
     flex-direction: row;
     height: auto;
     justify-content: left;
     width: 100%;
-    opacity: 1;
   }
 
   .overlay {
