@@ -12,7 +12,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="card">
+    <article class="card">
         <div class="left">
             <div class="header">
                 <img :src="props.image" alt="project image">
@@ -30,7 +30,7 @@ const props = defineProps<{
                 <p>Code source</p>
             </a>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>
