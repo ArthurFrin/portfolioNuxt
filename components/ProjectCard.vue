@@ -41,14 +41,17 @@ const props = defineProps<{
     background: rgba(170, 170, 170, 0.40);
     backdrop-filter: blur(30px);
     overflow: hidden;
-    min-width: 100px;
-    max-width: 600px;
-    width: 100%;
+    width: 35rem;
+    padding: 1.5rem;
+
     .left {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         width: 60%;
+        p {
+            padding: 1rem 3rem 0 0;
+        }
         .header {
             display: flex;
             gap: 1rem;
@@ -70,6 +73,10 @@ const props = defineProps<{
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+
+        span {
+            font-size: 1.5rem;
+            }
         .preview {
             width: 100%;
             aspect-ratio: 4/3;
@@ -79,15 +86,5 @@ const props = defineProps<{
 
     }
 
-    @media  screen and (min-width: 768px) {
-        flex-direction: column;
-        .left {
-            width: 100%;
-        }
-        .right {
-            width: 100%;
-        }
-        
-    }
 }
 </style>

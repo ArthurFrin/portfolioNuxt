@@ -5,22 +5,42 @@ const t = useI18n().t
 
 <template>
     <section>
-        <ProjectCard name="Biophilum" :description="t('biophilum.desc')" date="~2023~" image="https://cdn2.thecatapi.com/images/27i.jpg" preview="https://cdn2.thecatapi.com/images/94h.png" code-source="https://github.com/arthurfrin" code-source-color="#EF7163"/>
-        <ProjectCard name="Cleanwalk.org" :description="t('cleanwalk.desc')" date="~2023~" image="https://cdn2.thecatapi.com/images/27i.jpg" preview="https://cdn2.thecatapi.com/images/94h.png" code-source="https://github.com/arthurfrin" code-source-color="#6394EF"/>
-        <ProjectCard name="Biophilum" description="lalala" date="~2023~" image="https://cdn2.thecatapi.com/images/27i.jpg" preview="https://cdn2.thecatapi.com/images/94h.png" code-source="https://github.com/arthurfrin" code-source-color="#EF7163"/>
+      <div class="grid-container">
+        <ProjectCard
+          class="card-left"
+          name="Biophilum"
+          :description="t('biophilum.desc')"
+          date="~2023~"
+          image="https://cdn2.thecatapi.com/images/27i.jpg"
+          preview="https://cdn2.thecatapi.com/images/94h.png"
+          code-source="https://github.com/arthurfrin"
+          code-source-color="#EF7163"
+        />
+        <ProjectCard
+          class="card-right"
+          name="Cleanwalk.org"
+          :description="t('cleanwalk.desc')"
+          date="~2023~"
+          image="https://cdn2.thecatapi.com/images/27i.jpg"
+          preview="https://cdn2.thecatapi.com/images/94h.png"
+          code-source="https://github.com/arthurfrin"
+          code-source-color="#6394EF"
+        />
+        <ProjectCard
+          class="card-left"
+          name="Biophilum"
+          description="lalala"
+          date="~2023~"
+          image="https://cdn2.thecatapi.com/images/27i.jpg"
+          preview="https://cdn2.thecatapi.com/images/94h.png"
+          code-source="https://github.com/arthurfrin"
+          code-source-color="#EF7163"
+        />
+      </div>
     </section>
-</template>
-
-<style lang="scss" scoped>
-
-section {
-    background: linear-gradient(224deg, #377D57 2.99%, #37457D 90.89%);
-    display: flex;
-    height: 100%;
-    min-height: 100lvh;
-    padding: 0 0.5rem;
-    flex-direction: column;
-    align-items: center;
-    }
-</style>
-
+  </template>
+  
+ 
+  
+    
+  
