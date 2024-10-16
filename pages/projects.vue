@@ -23,7 +23,7 @@ import reperio_logo from '../assets/imgs/reperio_logo.png'
             <ProjectCard class="card" name="Biophilum" :description="t('biophilum.desc')" date="~2022~"
                 :image="biophilum_logo" :preview="biophilum" code-source="https://github.com/ArthurFrin/Biophilum"
                 code-source-color="#00CC58" />
-            <ProjectCard class="card" name="Biophilum" :description="t('biophilum.desc')" date="~2022~"
+            <ProjectCard class="card" name="Reperio" :description="t('Reperio.desc')" date="~2022~"
                 :image="reperio_logo" :preview="reperio" code-source="https://github.com/ArthurFrin/Reperio"
                 code-source-color="#A966FF" />
 
