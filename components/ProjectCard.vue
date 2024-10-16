@@ -24,7 +24,7 @@ const props = defineProps<{
         </div>
         <div class="right">
             <span>{{ props.date }}</span>
-            <img class="preview" :src="props.image" alt="preview">
+            <img class="preview" :src="props.preview" alt="preview">
             <a class="button-code-source" :href="props.codeSource" target="_blank":style="{ background: codeSourceColor }">
                 <img src="../assets/imgs/github_logo.svg" alt="github logo">
                 <p>Code source</p>

@@ -72,6 +72,13 @@
     "firebase": {
       "desc": "Used at Extia on a project as a database and in a small personal project"
     },
-    "projects": "Projects"
+    "projects": "Projects",
+
+    "biophilum.desc": "Biophilum is a single-page landing application made with Vue3",
+    "cleanwalk.desc": "Associative web platform for organizing cleanwalks (citizen pollution walks) technologies: Vue3, Flask, Docker, MySQL",
+    "ia-game.desc": "School project for creating web mini-games with AI, multiplayer, and image generation, technologies: Fastify, Vue3, Docker, MySQL, GitHub Actions",
+    "Reperio.desc": "School project for creating a professional networking site, technologies: EJS, Node.js, Express, MySQL"
+
+
   }
   

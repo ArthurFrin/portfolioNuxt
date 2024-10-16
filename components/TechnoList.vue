@@ -46,7 +46,6 @@ const props = defineProps<{
     text-align: center;
     gap: 0.5rem;
     position: relative;
-    cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
 

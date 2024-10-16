@@ -80,7 +80,8 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .navbar {
-  display: none; /* Cacher par défaut */
+  display: none;
+  /* Cacher par défaut */
   position: fixed;
   top: 0;
   left: 0;
@@ -93,13 +94,18 @@ onMounted(() => {
   height: 100lvh;
   z-index: 100;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  transform: translateX(-100%); /* Par défaut, la navbar est cachée à gauche */
-  opacity: 0; /* Cacher visuellement en plus du translate */
+  transform: translateX(-100%);
+  /* Par défaut, la navbar est cachée à gauche */
+  opacity: 0;
+  /* Cacher visuellement en plus du translate */
 
   &.is-open {
-    display: flex; /* Montrer le menu */
-    transform: translateX(0); /* Le menu est visible */
-    opacity: 1; /* Assurer que le menu est complètement visible */
+    display: flex;
+    /* Montrer le menu */
+    transform: translateX(0);
+    /* Le menu est visible */
+    opacity: 1;
+    /* Assurer que le menu est complètement visible */
   }
 }
 
@@ -124,8 +130,13 @@ onMounted(() => {
   z-index: 99;
 }
 
+
+
 .language {
-  font-size: 1.5rem;
+  position: absolute;
+  font-size: 1.2rem;
+  bottom: 2rem;
+  left: 3.3rem;
   padding: 0.5rem;
   cursor: pointer;
 }
@@ -133,11 +144,13 @@ onMounted(() => {
 /* Mode desktop */
 @media screen and (min-width: 768px) {
   .burger {
-    display: none; /* Cacher le burger en mode desktop */
+    display: none;
+    /* Cacher le burger en mode desktop */
   }
 
   .navbar {
-    display: flex; /* Montrer la navbar sur desktop */
+    display: flex;
+    /* Montrer la navbar sur desktop */
     position: fixed;
     transform: none;
     flex-direction: row;
@@ -145,11 +158,17 @@ onMounted(() => {
     justify-content: left;
     width: 100%;
     opacity: 1;
+
+    .language {
+      top: 1rem;
+      right: 3rem;
+      left: auto;
+    }
   }
 
   .overlay {
-    display: none; /* Pas d'overlay en mode desktop */
+    display: none;
+    /* Pas d'overlay en mode desktop */
   }
 }
-
 </style>

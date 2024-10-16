@@ -75,7 +75,8 @@
     "projects": "Projets",
 
     "biophilum.desc": "Biophilum est une landing page en single app application fais en Vue3",
-    "cleanwalk.desc": "platforme web associative pour l’organisation de cleanwalks (marche citoyennes de dépolution) technos: Vue3, Flask, docker,MySQL"
-
+    "cleanwalk.desc": "platforme web associative pour l’organisation de cleanwalks (marche citoyennes de dépolution) technos: Vue3, Flask, docker,MySQL",
+    "ia-game.desc": "Projet d'école de création de mini-jeux IA en web avec multijoueur et génération d'images, technos : Fastify, Vue3, Docker, MySQL, GitHub Actions",
+    "Reperio.desc": "Projet d'école de création d'un site de mise en relation professionel, technos : EJS, Node.js, Express, MySQL"
   }
   
